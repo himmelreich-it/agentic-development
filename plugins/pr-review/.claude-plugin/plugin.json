@@ -1,0 +1,11 @@
+{
+  "name": "pr-review",
+  "description": "Pull request review skills: run a comprehensive scoped PR review (review-pr) and critically process incoming review feedback (handle-code-review).",
+  "author": {
+    "name": "himmelreich-it",
+    "email": "ohimmelreich@pm.me"
+  },
+  "repository": "https://github.com/himmelreich-it/agentic-development",
+  "license": "MIT",
+  "keywords": ["pr", "code-review", "review", "workflow"]
+}

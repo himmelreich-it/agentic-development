@@ -1,0 +1,11 @@
+{
+  "name": "git-workflow",
+  "description": "Git branch workflow skills: create an isolated git worktree with local settings copied (worktree) and safely sync a feature branch with main preserving PR functionality (sync-main).",
+  "author": {
+    "name": "himmelreich-it",
+    "email": "ohimmelreich@pm.me"
+  },
+  "repository": "https://github.com/himmelreich-it/agentic-development",
+  "license": "MIT",
+  "keywords": ["git", "worktree", "branch", "workflow"]
+}

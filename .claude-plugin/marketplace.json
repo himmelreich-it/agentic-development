@@ -1,0 +1,31 @@
+{
+  "name": "agentic-development",
+  "owner": {
+    "name": "himmelreich-it",
+    "email": "ohimmelreich@pm.me"
+  },
+  "description": "Agentic development workflow skills for Claude Code: design/plan/resolve loops, PR review, and git worktree workflows.",
+  "plugins": [
+    {
+      "name": "design-flow",
+      "source": "./plugins/design-flow",
+      "description": "Collaborative and async design, planning, and review-resolution skills: ideation, confluence-ideation, design-for-review, plan-for-review, resolve-review.",
+      "category": "workflow",
+      "tags": ["design", "planning", "ideation"]
+    },
+    {
+      "name": "pr-review",
+      "source": "./plugins/pr-review",
+      "description": "PR review skills: comprehensive scoped review (review-pr) and critical processing of incoming review feedback (handle-code-review).",
+      "category": "workflow",
+      "tags": ["pr", "code-review"]
+    },
+    {
+      "name": "git-workflow",
+      "source": "./plugins/git-workflow",
+      "description": "Git branch workflow skills: isolated worktree creation (worktree) and safe feature-branch sync with main (sync-main).",
+      "category": "workflow",
+      "tags": ["git", "worktree"]
+    }
+  ]
+}
