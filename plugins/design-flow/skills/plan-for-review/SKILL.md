@@ -1,6 +1,6 @@
 ---
 name: plan-for-review
-description: "Use when you have an approved or resolved design and need a detailed implementation plan WITHOUT sitting at the terminal answering questions. Runs the normal writing-plans flow but writes any remaining implementation decisions into the plan as open questions with options and a recommendation, commits and pushes it, then hands off to resolve-review so the user can read and talk it through on their own time. Normally reached automatically from design-for-review once its design has zero open questions, but also trigger when the user asks to 'write the plan', 'turn this spec into a plan', or wants a hands-off / write-it-up-and-I'll-review planning flow."
+description: "Use when you have an approved or resolved design and need a detailed implementation plan WITHOUT sitting at the terminal answering questions. Runs the normal writing-plans flow but writes any remaining implementation decisions into the plan as open questions with options and a recommendation, commits and pushes it, then either hands off to resolve-review (when questions remain) or starts `superpowers:subagent-driven-development` immediately (when zero questions remain). Normally reached automatically from design-for-review once its design has zero open questions, but also trigger when the user asks to 'write the plan', 'turn this spec into a plan', or wants a hands-off / write-it-up-and-I'll-review planning flow."
 ---
 
 # Plan For Review
@@ -26,8 +26,10 @@ Invoke the `superpowers:writing-plans` skill and follow it fully, EXCEPT these e
 2. **OVERRIDE the execution handoff** (the base ends by offering to execute the plan). Instead: after the base's own self-review and plan-reviewer pass complete (keep those — they are why the plan is buildable), commit and push. Per CLAUDE.md never commit to `main`: if on `main`/`master` create a branch first, else commit on the current branch; replace any blocked push gracefully. Then:
 
    - **If open questions remain:** end with ONE message (not a question) — where the plan is, that it's pushed, the open-question count, and to talk it through and paste the transcript back. Then invoke `resolve-review`.
-   - **If zero open questions:** **STOP.** Do not auto-implement — the user drives that. Final message:
+   - **If zero open questions:** end with ONE message (not a question):
 
-     > Plan complete and resolved — zero open questions — committed and pushed to `<path>`. To implement, run `superpowers:subagent-driven-development` against this plan (recommended) or `superpowers:executing-plans` for inline. I'll wait for your go.
+     > Plan complete and resolved — zero open questions — committed and pushed to `<path>`. Starting `superpowers:subagent-driven-development` now with this plan.
+
+     Then invoke `superpowers:subagent-driven-development` immediately with this plan as input. Do not ask the user for permission to continue.
 
 Everything else from `superpowers:writing-plans` — scope check, file-structure mapping, bite-sized TDD task granularity, the no-placeholders rule, self-review, the plan-reviewer pass, the `REQUIRED SUB-SKILL: superpowers:subagent-driven-development` plan header, and the plan location convention — applies unchanged.
