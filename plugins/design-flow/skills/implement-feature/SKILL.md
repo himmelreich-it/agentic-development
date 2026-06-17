@@ -1,6 +1,6 @@
 ---
 name: implement-feature
-description: "End-to-end feature orchestration: create a dedicated worktree, run design-for-review and implementation there, then run review-pr before handoff. Use when the user wants a feature implemented from idea to reviewed PR-ready changes with minimal back-and-forth."
+description: "End-to-end feature orchestration: create a dedicated worktree, run design-for-review and implementation there, then run `pr-review:review-pr` before handoff. Use when the user wants a feature implemented from idea to reviewed PR-ready changes with minimal back-and-forth."
 ---
 
 # Implement Feature
