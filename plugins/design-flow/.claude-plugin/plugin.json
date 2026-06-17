@@ -1,11 +1,11 @@
 {
   "name": "design-flow",
-  "description": "Collaborative and async design, planning, and review-resolution skills: ideation, Confluence ideation, design-for-review, plan-for-review, and resolve-review.",
+  "description": "Collaborative and async design, planning, and review-resolution skills: ideation, Confluence ideation, design-for-review, plan-for-review, resolve-review, and implement-feature orchestration.",
   "author": {
     "name": "himmelreich-it",
     "email": "ohimmelreich@pm.me"
   },
   "repository": "https://github.com/himmelreich-it/agentic-development",
   "license": "MIT",
-  "keywords": ["design", "planning", "ideation", "spec", "workflow"]
+  "keywords": ["design", "planning", "ideation", "spec", "workflow", "implementation"]
 }

@@ -9,7 +9,7 @@
     {
       "name": "design-flow",
       "source": "./plugins/design-flow",
-      "description": "Collaborative and async design, planning, and review-resolution skills: ideation, confluence-ideation, design-for-review, plan-for-review, resolve-review.",
+      "description": "Collaborative and async design, planning, and review-resolution skills: ideation, confluence-ideation, design-for-review, plan-for-review, resolve-review, and implement-feature.",
       "category": "workflow",
       "tags": ["design", "planning", "ideation"]
     },

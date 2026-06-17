@@ -10,7 +10,7 @@ and contains three plugins.
 
 | Plugin | Skills | What it does |
 | --- | --- | --- |
-| **design-flow** | `ideation`, `confluence-ideation`, `design-for-review`, `plan-for-review`, `resolve-review` | Collaborative and async design → plan → resolve loop, plus interactive ideation and Confluence-published design sessions. |
+| **design-flow** | `ideation`, `confluence-ideation`, `design-for-review`, `plan-for-review`, `resolve-review`, `implement-feature` | Collaborative and async design → plan → resolve loop, interactive ideation, Confluence-published design sessions, and end-to-end feature orchestration. |
 | **pr-review** | `review-pr`, `handle-code-review` | Run a comprehensive scoped PR review, and critically evaluate / process incoming review feedback. |
 | **git-workflow** | `worktree`, `sync-main` | Create an isolated git worktree with local settings copied; safely sync a feature branch with `main` while preserving PR functionality. |
 
