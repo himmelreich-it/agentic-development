@@ -11,7 +11,7 @@
       "source": "./plugins/design-flow",
       "description": "Collaborative and async design, planning, and review-resolution skills: ideation, confluence-ideation, design-for-review, plan-for-review, resolve-review, and implement-feature.",
       "category": "workflow",
-      "tags": ["design", "planning", "ideation"]
+      "tags": ["design", "planning", "ideation", "implementation"]
     },
     {
       "name": "pr-review",
