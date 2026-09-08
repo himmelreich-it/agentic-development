@@ -20,7 +20,25 @@ git branch --format='%(refname:short) %(upstream:short) %(upstream:track)'
 git fetch --prune origin
 ```
 
-### 2. Classify each branch
+### 2. Audit upstreams correctly (authoritative checks)
+
+For each worktree path:
+
+```bash
+git -C <path> branch --show-current
+git -C <path> rev-parse --abbrev-ref --symbolic-full-name @{upstream}
+```
+
+Classify upstream status per checked-out branch:
+
+- **Upstream set** — command returns `<remote>/<branch>`
+- **Upstream missing** — command fails with "no upstream configured"
+- **Upstream gone** — upstream exists but `git branch -vv` / branch format shows `[gone]`
+- **Detached HEAD** — `branch --show-current` is empty; upstream does not apply
+
+Do **NOT** infer upstream correctness from repo-wide config counts like `branch.*.merge`.
+
+### 3. Classify each branch
 
 For each local branch (excluding `main`/`master`):
 
@@ -31,7 +49,7 @@ For each local branch (excluding `main`/`master`):
 
 For each worktree path: check `git -C <path> status --short` to see if it has uncommitted work. Dirty worktrees are NEVER auto-removed.
 
-### 3. Present findings
+### 4. Present findings
 
 Show table:
 
@@ -45,15 +63,29 @@ Show table:
 ### Active
 - feature/AI-ZZZ — open PR / no PR yet, branch ahead of main
 
+### Upstream fixes needed
+- feature/AI-AAA (worktree: /path) — no upstream configured; remote branch exists
+- feature/AI-BBB (worktree: /path) — no upstream configured; no remote branch yet
+
 ### Dirty (skipped)
 - feature/AI-WWW — has uncommitted changes, leave alone
 
-Remove the stale ones?
+Apply upstream fixes and remove stale ones?
 ```
 
-### 4. Clean up (after user confirms)
+### 5. Apply fixes / clean up (after user confirms)
 
-For each stale entry:
+For each branch missing upstream:
+
+```bash
+# If origin/<branch> exists
+git -C <worktree-path> branch --set-upstream-to=origin/<branch> <branch>
+
+# If no remote branch exists yet
+git -C <worktree-path> push -u origin <branch>
+```
+
+Then, for each stale entry:
 
 ```bash
 # IMPORTANT: cd to repo root first; never run from inside a worktree you're about to delete
@@ -74,3 +106,4 @@ Then `git worktree prune` to clean any stale admin records.
 - `git branch -d` refuses squash-merged branches; use `-D`.
 - Sandbox may block writes to `.git/config`; branch delete still succeeds but emits warnings — safe to ignore.
 - If `gh` is missing or unauthenticated, fall back to tree-comparison: `git cherry main <branch>` empty output = all commits present in main.
+- `branch.<name>.merge` values alone are insufficient; always verify `@{upstream}` branch-by-branch.

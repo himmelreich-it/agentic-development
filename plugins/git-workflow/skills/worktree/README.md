@@ -2,6 +2,11 @@
 
 Creates git worktrees in an organized directory, copies local settings (`.env`, `.claude/`, `.vscode/`, `.idea/`), and installs dependencies.
 
+It also ensures branch checkout/upstream handling is correct:
+- Existing local branch → checked out directly in the new worktree
+- Existing remote branch (`origin/<branch>`) → checked out as a local tracking branch
+- Brand-new branch → created from default base; upstream is intentionally absent until first push (`git push -u`)
+
 ## Usage
 
 ```
